@@ -29,10 +29,4 @@ class ApplicationController < ActionController::Base
     redirect_to login_path, alert: "You need to log in to view this page." if current_user.nil?
   end
 
-  # Cancancan issue
-  rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Access Denied."
-    redirect_to home_path
-  end
-
 end

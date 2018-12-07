@@ -1,4 +1,5 @@
 class CrimesController < ApplicationController
+  authorize_resource
   before_action :check_login
   
   

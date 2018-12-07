@@ -1,4 +1,5 @@
 class SuspectsController < ApplicationController
+    authorize_resource
     before_action :check_login
   
     def new

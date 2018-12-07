@@ -32,7 +32,6 @@ class AssignmentsController < ApplicationController
     @assignment.end_date = Date.current
     @assignment.save
     redirect_to officer_path(@assignment.officer)
-
   end
 
   private
