@@ -49,6 +49,13 @@ class InvestigationsController < ApplicationController
     end
   end
 
+  def search
+    redirect_back(fallback_location: investigations_path) if params[:query].blank?
+    @query = params[:query]
+    @investigations = Investigation.search(@query)
+    @total_hits = @investigations.size
+  end
+
 
 
 

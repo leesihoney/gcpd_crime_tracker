@@ -1,10 +1,8 @@
 class AssignmentsController < ApplicationController
-  authorize_resource
   before_action :check_login
-
-
+  authorize_resource
+  
   def new
-    authorize! :new, @assignment
     @assignment = Assignment.new
     unless params[:officer_id].nil?
       @officer    = Officer.find(params[:officer_id])
@@ -27,11 +25,11 @@ class AssignmentsController < ApplicationController
   end
 
   def terminate
-    authorize! :terminate, @assignment
     @assignment = Assignment.find(params[:id])
     @assignment.end_date = Date.current
     @assignment.save
     redirect_to officer_path(@assignment.officer)
+
   end
 
   private

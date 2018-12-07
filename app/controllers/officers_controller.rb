@@ -4,7 +4,6 @@ class OfficersController < ApplicationController
   before_action :check_login
 
   def index
-    authorize! :index, @officer
     @active_officers = Officer.active.alphabetical.paginate(page: params[:page]).per_page(10)
     @inactive_officers = Officer.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
   end
@@ -15,7 +14,6 @@ class OfficersController < ApplicationController
   end
 
   def new
-    authorize! :new, @officer
     @officer = Officer.new
   end
 
@@ -23,7 +21,6 @@ class OfficersController < ApplicationController
   end
 
   def create
-    authorize! :new, @officer
     @officer = Officer.new(officer_params)
     @user.active = true
     if @officer.save
@@ -47,13 +44,20 @@ class OfficersController < ApplicationController
   end
 
   def destroy
-    authorize! :destroy, @officer
     if @officer.destroy
       flash[:notice] = "Successfully destroyed #{@officer.proper_name}."
       redirect_to officers_path
     else
       render action: 'show'
-
+    end
+  end
+  
+  def search
+    redirect_back(fallback_location: officers_path) if params[:query].blank?
+    @query = params[:query]
+    @officers = Officer.search(@query)
+    @total_hits = @officers.size
+  end
 
 
 
