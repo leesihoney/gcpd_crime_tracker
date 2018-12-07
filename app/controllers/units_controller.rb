@@ -1,5 +1,5 @@
 class UnitsController < ApplicationController
-  before_action :check_login
+  authorize_resource
 
   
   def index
@@ -12,10 +12,12 @@ class UnitsController < ApplicationController
     @officers = @unit.officers.active.alphabetical.paginate(page: params[:page]).per_page(10)
   end
 
+  authorize! :new, @unit
   def new
     @unit = Unit.new
   end
 
+  authorize! :edit, @unit
   def edit
     @unit = Unit.find(params[:id])
   end

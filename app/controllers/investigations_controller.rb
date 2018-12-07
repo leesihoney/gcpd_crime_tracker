@@ -1,4 +1,5 @@
 class InvestigationsController < ApplicationController
+  authorize_resource
   before_action :set_investigation, only: [:show, :edit, :update, :close, :crimes]
   before_action :check_login
 

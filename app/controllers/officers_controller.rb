@@ -1,9 +1,10 @@
 class OfficersController < ApplicationController
+  authorize_resource
   before_action :set_officer, only: [:show, :edit, :update, :destroy]
   before_action :check_login
 
-
   def index
+    authorize! :index, @officer
     @active_officers = Officer.active.alphabetical.paginate(page: params[:page]).per_page(10)
     @inactive_officers = Officer.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
   end
@@ -14,6 +15,7 @@ class OfficersController < ApplicationController
   end
 
   def new
+    authorize! :new, @officer
     @officer = Officer.new
   end
 
@@ -21,6 +23,7 @@ class OfficersController < ApplicationController
   end
 
   def create
+    authorize! :new, @officer
     @officer = Officer.new(officer_params)
     @user.active = true
     if @officer.save
@@ -42,6 +45,14 @@ class OfficersController < ApplicationController
       end
     end
   end
+
+  def destroy
+    authorize! :destroy, @officer
+    if @officer.destroy
+      flash[:notice] = "Successfully destroyed #{@officer.proper_name}."
+      redirect_to officers_path
+    else
+      render action: 'show'
 
 
 
