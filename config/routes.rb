@@ -24,18 +24,24 @@ Rails.application.routes.draw do
   post 'assignments', to: 'assignments#create', as: :assignments
   patch 'assignments/:id/terminate', to: 'assignments#terminate', as: :terminate_assignment
 
+
   # Toggle paths
 
 
 
 
   # Other custom routes
-
-
+  resources :criminals
+  get 'suspects/new', to: 'suspects#new', as: :new_suspect
+  post 'suspects', to: 'suspects#create', as: :suspects
+  patch 'suspects/:id/remove', to: 'suspects#remove', as: :remove_suspect
 
 
   # Routes for searching
 
+  get 'investigations/search', to: 'investigations#search', as: :investigation_search
+  get 'officers/search', to: 'officers#search', as: :officer_search
+  get 'criminals/search', to: 'criminals#search', as: :criminal_search
 
 
 
