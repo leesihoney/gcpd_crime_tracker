@@ -1,0 +1,23 @@
+.bg-black {
+    background-color: #000000;
+}
+
+.home-title{
+    display: grid;
+    grid-template-rows: auto auto;
+    align-content: center;
+}
+.home-title-logo{
+    /* Better, Safer, Stronger */
+    width: 100%;
+    font-family: Kitchen police;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 4em;
+    color: #FFFFFF;
+}
+
+.home-bg img{
+    width: 100%;
+}

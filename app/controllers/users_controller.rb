@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     end
   
     def edit
-      @user.role = "assistant" if current_user.role?(:officer)
+      @user.role = 'Commissioner' if current_user.role?(:commish)
     end
   
     def create
