@@ -8,7 +8,11 @@
            The GCPD is considered to be the one of the first 'modern' style police departments in the United States. THE GCPD boasts a broad carray of specialized services, offering expertise in tactical operations, bomb disposal, anti-gang measure, and forensic services. 
           </p>
           <div class ="home-title-buttons">
+            <% unless logged_in? %>
             <%= link_to 'Sign In', login_path, :class => 'home-primary-button' %>
+            <% else %>
+            <%= link_to 'Log out', logout_path, :class => 'home-primary-button' %>
+            <% end %>
             <%= link_to 'View Crimes', crimes_path, :class => 'home-secondary-button' %>
           </div>
         </div>

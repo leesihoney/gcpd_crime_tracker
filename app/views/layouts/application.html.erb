@@ -14,6 +14,7 @@
     <!-- nav -->
     <% if logged_in? %>
       <%= render :partial => "partials/topnav_logged" %>
+      <%= render :partial => "partials/secondnav" %>
     <% else %>
       <%= render :partial => "partials/topnav_all" %>
     <% end %>

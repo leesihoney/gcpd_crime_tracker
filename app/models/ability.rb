@@ -16,7 +16,7 @@ class Ability
       can :manage, Assignment
       can :read, Unit
       can :update, Unit do |unit|  
-        unit.id == user.unit_id
+        unit.id == user.officer.unit_id
       end
       can :manage, Officer do |officer|  
         officer.unit_id == user.unit_id
