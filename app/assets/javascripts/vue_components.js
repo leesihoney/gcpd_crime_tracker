@@ -3,18 +3,18 @@ Vue.component('tabs', {
   template: `
     <div>
       <div class="row">
-          <div class="col s12">
-            <ul class="tabs">
-              <li class="tab col s4" v-for="tab in tabs">
-                <a v-bind:href="tab.href" v-bind:class="{ 'active': tab.isActive }" v-on:click="selectTab(tab)">{{ tab.name }}</a>
-              </li>
-            </ul>
-          </div>
+        <div class="col s12">
+          <ul class="tabs vue-tabs">
+            <li class="tab col s2" v-for="tab in tabs">
+              <a class='tab-text-blue' v-bind:href="tab.href" v-bind:class="{ 'active': tab.isActive }" v-on:click="selectTab(tab)">{{ tab.name }}</a>
+            </li>
+          </ul>
         </div>
+      </div>
       
-        <div class="tab-details">
-          <slot></slot>
-        </div>
+      <div class="tab-details">
+        <slot></slot>
+      </div>
         
       </div>
   `,

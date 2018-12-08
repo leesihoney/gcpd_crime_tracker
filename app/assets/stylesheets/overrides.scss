@@ -12,14 +12,36 @@ h1, h2, h3, h4, h5, h6, a, p {
     height: 100vh;
 }
 
-.row .col, .section {
+.row, .col, .section {
     margin: 0;
     padding: 0;
 }
-
-
+.row {
+    width: 100%;
+}
+.container .row{
+    margin: 0;
+}
 
 .section {
     max-width: 940px;
     margin: 0 auto;
+}
+
+.vue-section {
+    width: 1100px;
+    padding: 0 80px;
+    margin: 0 auto;
+}
+
+.btn-secondary {
+    background-color: white;
+    border: 1px solid;
+    color: #192B61;
+    border-color: #192B61;
+}
+
+.btn-secondary:hover{
+    background-color: #192B61;
+    color: white; 
 }

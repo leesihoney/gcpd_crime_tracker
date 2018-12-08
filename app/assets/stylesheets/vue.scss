@@ -1,0 +1,18 @@
+.chosen-tab {
+    font-size: 1.25em;
+    font-weight: 800;
+    margin-top: 20px;
+}
+
+.tabs .tab .tab-text-blue.active, .tabs .tab .tab-text-blue:hover {
+    color: #192B61;
+}
+
+.tabs .tab .tab-text-blue{
+    padding: 0;
+    color: rgba(25, 43, 97, 0.7);
+}
+
+.vue-tabs .indicator {
+    background-color: #192B61 !important; 
+}
