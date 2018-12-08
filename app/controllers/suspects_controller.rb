@@ -3,12 +3,10 @@ class SuspectsController < ApplicationController
     before_action :check_login
   
     def new
-      authorize! :new, @suspect
       @suspect = Suspect.new
     end
     
     def create
-      authorize! :new, @suspect
       @suspect = Suspect.new(suspect_params)
       if @suspect.save
         flash[:notice] = "Successfully added #{@suspect.criminal.proper_name} on the investigation #{@suspect.investgation.title}."
@@ -23,12 +21,11 @@ class SuspectsController < ApplicationController
 
     # only set dropped_on to current date
     def remove
-        authorize! :remove, @suspect
-        @suspect = Suspect.find(params[:id])
-        @suspect.dropped_on = Date.current.to_date
-        @suspect.saves
-        # redirect can be show_investigation or criminal_investigation
-        redirect_to investigation_path(@suspect.investigation)
+      @suspect = Suspect.find(params[:id])
+      @suspect.dropped_on = Date.current.to_date
+      @suspect.saves
+      # redirect can be show_investigation or criminal_investigation
+      redirect_to investigation_path(@suspect.investigation)
     end
 
     private

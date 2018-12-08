@@ -7,8 +7,10 @@ class AssignmentsController < ApplicationController
     unless params[:officer_id].nil?
       @officer    = Officer.find(params[:officer_id])
       @officer_investigations = @officer.assignments.current.map{|a| a.investigation }
+    else 
+      @investigation = Investigation.find(params[:investigation_id])
+      @investigation_officers = @investigation.assignments.current.map{|a| a.officer }
     end
-
   end
   
   def create

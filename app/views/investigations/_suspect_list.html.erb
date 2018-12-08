@@ -1,0 +1,23 @@
+<div class = 'card'>
+    <div class = 'card-content'>
+        <span class="card-title">Suspects</span>
+        <div id="tabbed">
+            <tabs>
+                <tab name="current" v-bind:selected="true">
+                    <%= render :partial => "suspect_tab", locals: {suspects: @current_suspects, state: 'current'} %>
+                </tab>
+        
+                <tab name="previous">
+                    <%= render :partial => "suspect_tab", locals: {suspects: @previous_suspects, state: 'previous'} %>
+                </tab>
+            </tabs>
+      </div>
+
+      <% if can? :new, Suspect %>
+        <div class="card-action">
+            <%= link_to "Add a new suspect", new_suspect_path(investigation_id: @investigation.id) %>
+        </div>
+      <% end %>
+    </div>
+
+</div>

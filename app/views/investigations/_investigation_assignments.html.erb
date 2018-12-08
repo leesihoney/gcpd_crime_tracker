@@ -1,13 +1,15 @@
-<div id="tabbed">
-  <tabs>
+<div class = 'card'>
+  <div class = 'card-content'>
+    <span class="card-title"> Current Assignments History</span>
 
-    <tab name="current assignments" v-bind:selected="true">
+
       <%= render :partial => "assignment_list", locals: {assignments: @current_assignments, state: 'current'} %>
-    </tab>
 
-    <tab name="past assignments">
-      <%= render :partial => "assignment_list", locals: {assignments: @past_assignments, state: 'past'} %>
-    </tab>
+    <% if can? :new, Assignment %>
+    <div class="card-action">
+      <%= link_to "Add a new assignment", new_assignment_path(investigation_id: @investigation.id) %>
+    </div>
+    <% end %>
 
-  </tabs>
+  </div>
 </div>

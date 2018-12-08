@@ -1,0 +1,17 @@
+<div class = 'card'>
+    <div class = 'card-content'>
+        <div class = 'note-header'>
+            <div class = 'note-officer'>
+                <%= note.officer.name %>
+            </div>
+
+            <div class = 'note-date' >
+                <%= note.date.strftime("%m/%d/%y") %>
+            </div>
+        </div>
+
+        <div class = 'note-content'>
+            <%= note.content %>
+        </div>
+    </div>
+</div>

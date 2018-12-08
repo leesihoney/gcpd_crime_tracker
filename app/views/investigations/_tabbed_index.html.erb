@@ -9,6 +9,14 @@
       <%= render :partial => "investigation_list", locals: {investigations: @closed_investigations, state: 'closed'} %>
     </tab>
 
+    <tab name = 'batman'>
+      <%= render :partial => "with_batman", locals: {investigations: @with_batman, state: 'closed'} %>
+    </tab>
+
+    <tab name = 'statue-barred'>
+      <%= render :partial => "closed_unsolved", locals: {investigations: @closed_unsolved, state: 'closed'} %>
+    </tab>
+
   </tabs>
 </div>
 

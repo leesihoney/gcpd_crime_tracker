@@ -1,0 +1,19 @@
+<% unless suspects.empty? %>
+    <table class="lined">
+      <thead>
+        <th>Criminal</th>
+        <th>Starting</th>
+      </thead>
+      <% for suspect in suspectss %>
+      <tr>
+        <td>
+          &nbsp;<%= link_to suspect.criminal.name, crimianl_path(suspect.criminal) %>
+        </td>
+        <td><%= suspect.added_on.strftime("%m/%d/%y") %></td>
+      </tr>
+      <% end %>
+    </table>
+
+<% else %>
+  <p class = 'no-data-small'> No <%= state %> suspects </p>
+<% end %>

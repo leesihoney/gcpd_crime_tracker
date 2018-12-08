@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :units
   resources :investigations
   resources :crimes
+  resources :investigation_notes
 
   # Routes for assignments
   get 'assignments/new', to: 'assignments#new', as: :new_assignment

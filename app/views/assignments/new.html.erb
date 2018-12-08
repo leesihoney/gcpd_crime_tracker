@@ -1,5 +1,9 @@
-<% if @officer_investigations.nil? %>
-  <%= render :partial => "assign_from_investigation" %>
-<% else %>
-  <%= render :partial => "assign_from_officer" %>
-<% end %>
+<div class = 'container'>
+  <div class = 'vue-section'>
+    <% if @officer_investigations.nil? %>
+      <%= render :partial => "assign_from_investigation" %>
+    <% else %>
+      <%= render :partial => "assign_from_officer" %>
+    <% end %>
+  </div>
+</div>
