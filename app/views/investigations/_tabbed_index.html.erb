@@ -1,11 +1,11 @@
 <div id="tabbed">
   <tabs>
 
-    <tab name="open investigations" v-bind:selected="true">
+    <tab name="open" v-bind:selected="true">
       <%= render :partial => "investigation_list", locals: {investigations: @open_investigations, state: 'open'} %>
     </tab>
 
-    <tab name="closed investigations">
+    <tab name="closed">
       <%= render :partial => "investigation_list", locals: {investigations: @closed_investigations, state: 'closed'} %>
     </tab>
 

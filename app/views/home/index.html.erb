@@ -1,27 +1,26 @@
 <div class = 'container bg-black'>
   <div class = 'section'>
-    <div class="row">
-      <div class="col s6 title">
-        <div class = "home-title">
-          <div class = "home-title-logo"> Better, Safer, Stronger </div>
-          <p class = 'home-title-exp'>
-           The GCPD is considered to be the one of the first 'modern' style police departments in the United States. THE GCPD boasts a broad carray of specialized services, offering expertise in tactical operations, bomb disposal, anti-gang measure, and forensic services. 
-          </p>
-          <div class ="home-title-buttons">
-            <% unless logged_in? %>
-            <%= link_to 'Sign In', login_path, :class => 'home-primary-button' %>
-            <% else %>
-            <%= link_to 'Log out', logout_path, :class => 'home-primary-button' %>
-            <% end %>
-            <%= link_to 'View Crimes', crimes_path, :class => 'home-secondary-button' %>
-          </div>
+    <div class="home-groups">
+
+      <div class = "home-title">
+        <div class = "home-title-logo"> Better, Safer, Stronger </div>
+        <p class = 'home-title-exp'>
+          The GCPD is considered to be the one of the first 'modern' style police departments in the United States. The GCPD boasts a broad carray of specialized services, offering expertise in tactical operations, bomb disposal, anti-gang measure, and forensic services. 
+        </p>
+        <div class ="home-title-buttons">
+          <% unless logged_in? %>
+          <%= link_to 'Sign In', login_path, :class => 'home-primary-button' %>
+          <% else %>
+          <%= link_to 'Log out', logout_path, :class => 'home-primary-button' %>
+          <% end %>
+          <%= link_to 'View Crimes', crimes_path, :class => 'home-secondary-button' %>
         </div>
       </div>
-      <div class = "col s6">
-        <div class ="home-bg">
-          <%= image_tag('home_background.png') %>
-        </div>
+
+      <div class ="home-bg">
+        <%= image_tag('home_background.png') %>
       </div>
+
     </div>
   </div>
 

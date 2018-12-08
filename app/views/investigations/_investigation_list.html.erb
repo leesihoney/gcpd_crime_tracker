@@ -1,7 +1,6 @@
-<h4><%= state.capitalize %> Investigations in GCPD</h4>
 
 <% if investigations.empty? %>
-  <p>There are no <%= state.downcase %> investigations at this time.</p>
+  <p class = 'no-data'>There are no <%= state.downcase %> investigations at this time.</p>
 <% else %>
 
   <table class="striped highlight">
@@ -16,7 +15,5 @@
       </tr>
     <% end %>
   </table>
-  <p class="supertiny"></p>
-  <br />
   <%= will_paginate investigations, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
 <% end %>
