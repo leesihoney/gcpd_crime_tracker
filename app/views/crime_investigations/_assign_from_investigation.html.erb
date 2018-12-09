@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col s7">
+    <div class = 'card'>
+      <div class = 'card-content'>
+        <span class = 'card-title'> New Crime: </span>
+        <%= simple_form_for(@crime_investigation) do |f| %>
+          <%= f.error_notification %>
+          <div class="row">
+            <div class="form-inputs">
+              <%= f.input :investigation_id, as: :hidden, input_html: { value: @investigation.id } %>
+              <%= f.input :from, as: :hidden, input_html: { value: "investigation" } %>
+              <%= f.input :crime_id, collection: Crime.alphabetical.to_a, include_blank: true %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-actions col s8">
+              <%= f.button :submit, :class => "waves-effect waves-light btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col s5">
+    <div class = 'card'>
+      <div class = 'card-content'>
+        <span class = 'card-title'> For Investigation: </span>
+        <p class = 'card-subtitle'><%= @investigation.title %></p>
+      </div>
+    </div>
+  </div>
+</div>

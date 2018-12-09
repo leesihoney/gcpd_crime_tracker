@@ -57,6 +57,7 @@ class Ability
       can :update, User do |u|
         u.id == user.id
       end
+
     else
       can :read, Crime
     end

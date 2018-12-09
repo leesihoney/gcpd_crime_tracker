@@ -22,13 +22,21 @@ class OfficersController < ApplicationController
 
   def create
     @officer = Officer.new(officer_params)
+    @user = User.new(user_params)
     @officer.active = true
-    if @officer.save
-      flash[:notice] = "Successfully created #{@officer.proper_name}."
-      redirect_to officer_path(@officer) 
-    else
+    if !@user.save
+      @officer.valid?
       render action: 'new'
-    end      
+    else
+      @officer.user_id = @user.id
+      if @officer.save
+        flash[:notice] = "Successfully created #{@officer.proper_name}."
+        redirect_to officer_path(@officer)
+      else
+        flash[:notice] = "Unsuccessfully created #{@officer.proper_name}."
+        render action: 'new'
+      end
+    end 
   end
 
   def update
@@ -72,5 +80,8 @@ class OfficersController < ApplicationController
     params.require(:officer).permit(:first_name, :last_name, :rank, :ssn, :active, :unit_id)
   end
 
+  def user_params      
+    params.require(:officer).permit(:username, :password, :password_confirmation)
+  end
 
 end

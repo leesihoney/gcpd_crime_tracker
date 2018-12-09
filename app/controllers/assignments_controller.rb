@@ -15,22 +15,21 @@ class AssignmentsController < ApplicationController
   end
   
   def create
-    puts params[:from]
+    puts params[:assignment][:from]
     @assignment = Assignment.new(assignment_params)
     @assignment.start_date = Date.current
     if @assignment.save
-      if params[:from] == "investigation"
+      if params[:assignment][:from] == "investigation"
         redirect_to investigation_path(@assignment.investigation)
-      elsif params[:from] == "officer"
+      elsif params[:assignment][:from] == "officer"
         redirect_to officer_path(@assignment.officer)
       end
       flash[:notice] = "Successfully added assignment."
 
 
     else
-      puts params[:from] + " Failed!"
-      if params[:from] == "investigation"
-        @investigation = Investigation.find(params[:assignment[:officer_id]])
+      if params[:assignment][:from] == "investigation"
+        @investigation = Investigation.find(params[:assignment][:officer_id])
         render action: 'new', locals: { investigation: @investigation}
       else
         @officer = Officer.find(params[:assignment][:officer_id])
@@ -46,7 +45,7 @@ class AssignmentsController < ApplicationController
     redirect_to officer_path(@assignment.officer)
 
   end
-
+  
   private
   def assignment_params
     params.require(:assignment).permit(:investigation_id, :officer_id, :start_date, :end_date)

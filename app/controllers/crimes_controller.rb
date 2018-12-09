@@ -1,7 +1,4 @@
 class CrimesController < ApplicationController
-  authorize_resource
-  before_action :check_login
-  
   
   def index
     @active_crimes = Crime.active.alphabetical.paginate(page: params[:page]).per_page(10)
@@ -9,23 +6,29 @@ class CrimesController < ApplicationController
   end
 
   def new
+    authorize! :new, @crime
     @crime = Crime.new
   end
 
   def edit
+    authorize! :edit, @crime
     @crime = Crime.find(params[:id])
   end
 
   def create
+    authorize! :create, @crime
     @crime = Crime.new(crime_params)
     if @crime.save
+      puts "Passed!"
       redirect_to crimes_path, notice: "Successfully added #{@crime.name} to GCPD."
     else
-      render action: 'new'
+      puts "Nyo"
+      render action: 'new', notice: "Fail to add #{@crime.name} to GCPD."
     end
   end
 
   def update
+    authorize! :update, @crime
     @crime = Crime.find(params[:id])
     respond_to do |format|
       if @crime.update_attributes(crime_params)

@@ -15,14 +15,9 @@ class InvestigationNotesController < ApplicationController
   
     def create
       @note = InvestigationNote.new(investigation_note_params)
-      @note.date = Date.current.to_date
       if @note.save
         redirect_to investigation_path(@note.investigation), notice: "Successfully added note to #{@note.investigation.title}."
       else
-        puts @note.date
-        puts @note.investigation.title
-        puts @note.officer.name
-        puts @note.content
         @investigation = Investigation.find(params[:investigation_note][:investigation_id])
         @officer = Officer.find_by_user_id(current_user.id)
         render action: 'new', locals: { investigation: @investigation, officer: @officer }

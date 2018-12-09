@@ -30,3 +30,52 @@
     font-weight: 200;
     font-size: 1em;
 }
+
+.no-notes {
+    margin: 16px 0;
+
+}
+
+.add-crime {
+    color: white;
+    background-color: #192B61;
+    padding: 2px 3%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 30px;
+}
+
+.add-crime:hover{
+    color: #192B61;
+    background-color: white;
+    padding: 2px 3%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #192B61;
+    border-radius: 30px;
+}
+
+.delete-crime:hover {
+    color: white;
+    background-color: red;
+    padding-left: 3%;
+    padding-right: 3%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 30px;
+}
+.delete-crime{
+    color: red;
+    background-color: white;
+    padding-left: 3%;
+    padding-right: 3%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: red;
+    border-radius: 30px;
+}
+.dotted-list{
+    list-style-type: circle;
+}

@@ -3,8 +3,8 @@
     <span class="card-title"> Current Assignments History</span>
 
 
-      <%= render :partial => "assignment_list", locals: {assignments: @current_assignments, state: 'current'} %>
-
+    <%= render :partial => "assignment_list", locals: {assignments: @current_assignments, state: 'current'} %>
+  
     <% if can? :new, Assignment %>
     <div class="card-action">
       <%= link_to "Add a new assignment", new_assignment_path(investigation_id: @investigation.id) %>

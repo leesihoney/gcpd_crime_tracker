@@ -1,3 +1,4 @@
+
 .container, h1, h2, h3, h4, h5, h6, a, p {
     margin: 0;
     padding: 0;
@@ -9,6 +10,7 @@ h1, h2, h3, h4, h5, h6, a, p {
     display: flex;
     width: 100%;
     max-width: 100%;
+    min-height: 90vh;
 }
 
 .row, .col, .section {
@@ -40,9 +42,11 @@ h1, h2, h3, h4, h5, h6, a, p {
     border-color: #192B61;
 }
 
-.btn-secondary:hover{
-    background-color: #192B61;
-    color: white; 
+.btn-secondary:hover, .btn-primary:hover{
+    color: white;
+    background-color: #284AB2;
+    border-color: #284AB2;
+
 }
 
 .btn-primary {
@@ -52,8 +56,13 @@ h1, h2, h3, h4, h5, h6, a, p {
     border-color: #192B61;
 }
 
-.btn-primary:hover{
-    background-color: #284AB2;
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+    color: #192B61;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
+    color: rgba(25, 43, 97, 0.6);
 }
 
 .btn-alert {

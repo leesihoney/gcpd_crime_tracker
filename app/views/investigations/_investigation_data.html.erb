@@ -2,13 +2,15 @@
   <div class="card-content">
     <h5>Information for <%= @investigation.title %></h5><br />
 
-    <b>Crimes committed:&nbsp;&nbsp;</b><br />
+    <b>Crimes committed:&nbsp;&nbsp;</b> <%=link_to " + Add Crime To Investigation", new_crime_investigation_path(investigation_id: @investigation.id), class: 'add-crime' %> <br />
+      <ul class='dotted-list'>
       <% @case_crimes.each do |crime| %> 
-        <!-- <li><%# crime.name %></li> -->
+        <!-- <li>   <%# crime.name %></li> -->
 
 
-        <%= crime.name %><br />
+        <li> <%= crime.name %> <%= link_to "Delete", crime_investigation_path(CrimeInvestigation.where(crime_id: crime.id, investigation_id: @investigation.id).last), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: 'delete-crime' %> </li>
       <% end %>
+      </ul>
 
 
       <br /><br />

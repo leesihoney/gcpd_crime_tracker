@@ -23,7 +23,11 @@
 
     <%= yield %>
     <!-- footer -->
-    <%= render :partial => "partials/footer" %> 
+    <% if logged_in? %>
+      <%= render :partial => "partials/footer_logged" %> 
+    <% else %>
+      <%= render :partial => "partials/footer" %> 
+    <% end %>
     <%= javascript_include_tag 'application' %>   
   </body>
 </html>
