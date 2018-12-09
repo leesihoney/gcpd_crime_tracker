@@ -13,14 +13,15 @@ class SuspectsController < ApplicationController
     
     def create
       @suspect = Suspect.new(suspect_params)
+      @suspect.added_on = Date.current.to_date
       if @suspect.save
-        flash[:notice] = "Successfully added #{@suspect.criminal.proper_name} on the investigation #{@suspect.investgation.title}."
+        flash[:notice] = "Successfully added #{@suspect.criminal.proper_name} on the investigation #{@suspect.investigation.title}."
         # redirect can be show_investigation or criminal_investigation
         redirect_to investigation_path(@suspect.investigation)
       else
         # error message 
         flash[:notice] = "Failed to add #{@suspect.criminal.proper_name} on the investigation #{@suspect.investigation.title}."
-        render action: 'new'
+        render action: 'new', locals: { investigation_id: @suspect.investigation.id }
       end      
     end
 
@@ -28,7 +29,7 @@ class SuspectsController < ApplicationController
     def remove
       @suspect = Suspect.find(params[:id])
       @suspect.dropped_on = Date.current.to_date
-      @suspect.saves
+      @suspect.save
       # redirect can be show_investigation or criminal_investigation
       redirect_to investigation_path(@suspect.investigation)
     end

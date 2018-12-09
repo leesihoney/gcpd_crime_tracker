@@ -7,22 +7,35 @@ class AssignmentsController < ApplicationController
     unless params[:officer_id].nil?
       @officer    = Officer.find(params[:officer_id])
       @officer_investigations = @officer.assignments.current.map{|a| a.investigation }
-    else 
+    end
+    unless params[:investigation_id].nil?
       @investigation = Investigation.find(params[:investigation_id])
-      @investigation_officers = @investigation.assignments.current.map{|a| a.officer }
+      @investigation_officers = @investigation.assignments.current.map {|a| a.officer}
     end
   end
   
   def create
+    puts params[:from]
     @assignment = Assignment.new(assignment_params)
     @assignment.start_date = Date.current
     if @assignment.save
+      if params[:from] == "investigation"
+        redirect_to investigation_path(@assignment.investigation)
+      elsif params[:from] == "officer"
+        redirect_to officer_path(@assignment.officer)
+      end
       flash[:notice] = "Successfully added assignment."
-      redirect_to officer_path(@assignment.officer)
+
 
     else
-      @officer     = Officer.find(params[:assignment][:officer_id])
-      render action: 'new', locals: { officer: @officer }
+      puts params[:from] + " Failed!"
+      if params[:from] == "investigation"
+        @investigation = Investigation.find(params[:assignment[:officer_id]])
+        render action: 'new', locals: { investigation: @investigation}
+      else
+        @officer = Officer.find(params[:assignment][:officer_id])
+        render action: 'new', locals: { officer: @officer }
+      end
     end
   end
 

@@ -4,11 +4,9 @@ class InvestigationNotesController < ApplicationController
 
   
     def new
-      @note = InvestigationNote.new
-      unless params[:investigation_id].nil?
-        @investigation = Investigation.find(params[:investigation_id])
-        @officr = current_user.officer
-      end
+      @investigation = Investigation.find(params[:investigation_id])
+      @officer = Officer.find_by_user_id(current_user.id)
+      @note = InvestigationNote.new(investigation_id: @investigation.id, officer_id: @officer.id)
     end
   
     def edit
@@ -21,19 +19,25 @@ class InvestigationNotesController < ApplicationController
       if @note.save
         redirect_to investigation_path(@note.investigation), notice: "Successfully added note to #{@note.investigation.title}."
       else
-        render action: 'new'
+        puts @note.date
+        puts @note.investigation.title
+        puts @note.officer.name
+        puts @note.content
+        @investigation = Investigation.find(params[:investigation_note][:investigation_id])
+        @officer = Officer.find_by_user_id(current_user.id)
+        render action: 'new', locals: { investigation: @investigation, officer: @officer }
       end
     end
   
     def update
-        @note = InvestigationNote.find(params[:id])
-        respond_to do |format|
+      @note = InvestigationNote.find(params[:id])
+      respond_to do |format|
         if @note.update_attributes(note_params)
           format.html { redirect_to @note, notice: "Updated information" }
-  
+    
         else
           format.html { render :action => "edit" }
-  
+    
         end
       end
     end

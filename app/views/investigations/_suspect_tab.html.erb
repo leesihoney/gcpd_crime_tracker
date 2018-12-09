@@ -4,10 +4,10 @@
         <th>Criminal</th>
         <th>Starting</th>
       </thead>
-      <% for suspect in suspectss %>
+      <% for suspect in suspects %>
       <tr>
         <td>
-          &nbsp;<%= link_to suspect.criminal.name, crimianl_path(suspect.criminal) %>
+          &nbsp;<%= link_to suspect.criminal.name, criminal_path(suspect.criminal) %>
         </td>
         <td><%= suspect.added_on.strftime("%m/%d/%y") %></td>
       </tr>

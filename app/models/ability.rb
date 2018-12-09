@@ -8,6 +8,7 @@ class Ability
     if user.role? :commish
       can :manage, :all
     elsif user.role? :chief
+      can :read, :all
       can :manage, Investigation
       can :manage, InvestigationNote
       can :manage, CrimeInvestigation
@@ -16,10 +17,10 @@ class Ability
       can :manage, Assignment
       can :read, Unit
       can :update, Unit do |unit|  
-        unit.id == user.unit_id
+        unit.id == Officer.find_by_user_id(user.id).unit_id
       end
       can :manage, Officer do |officer|  
-        officer.unit_id == user.unit_id
+        officer.unit_id == Officer.find_by_user_id(user.id).unit_id
       end
       can :read, User do |u|
         u.id == user.id
@@ -32,7 +33,7 @@ class Ability
       can :new, Investigation
       can :create, Investigation
       can :update, Investigation do |investigation|
-        user.officer.investigations.include?(investigation)
+        Officer.find_by_user_id(user.id).assignments.current.map{|a| a.investigation_id}.to_a.include?(investigation.id)
       end
       can :manage, InvestigationNote
       can :read, Assignment
@@ -50,7 +51,12 @@ class Ability
       can :show, Unit do |unit|
         unit.id == user.officer.unit_id
       end
-    
+      can :read, User do |u|
+        u.id == user.id
+      end
+      can :update, User do |u|
+        u.id == user.id
+      end
     else
       can :read, Crime
     end
