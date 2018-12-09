@@ -7,7 +7,7 @@ class InvestigationNotesController < ApplicationController
       @note = InvestigationNote.new
       unless params[:investigation_id].nil?
         @investigation = Investigation.find(params[:investigation_id])
-        @officer = current_user.officer
+        @officr = current_user.officer
       end
     end
   
@@ -19,7 +19,7 @@ class InvestigationNotesController < ApplicationController
       @note = InvestigationNote.new(investigation_note_params)
       @note.date = Date.current.to_date
       if @note.save
-        redirect_to investigation_path(@note.investigation), notice: "Successfully added note to #{note.investigation.title}."
+        redirect_to investigation_path(@note.investigation), notice: "Successfully added note to #{@note.investigation.title}."
       else
         render action: 'new'
       end

@@ -22,7 +22,7 @@ class OfficersController < ApplicationController
 
   def create
     @officer = Officer.new(officer_params)
-    @user.active = true
+    @officer.active = true
     if @officer.save
       flash[:notice] = "Successfully created #{@officer.proper_name}."
       redirect_to officer_path(@officer) 

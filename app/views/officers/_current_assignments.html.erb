@@ -23,7 +23,7 @@
       </table>
       <% if can? :new, Assignment %>
       <div class="card-action">
-        <%= link_to "Add a new assignment", new_assignment_path(officer_id: @officer.id) %>
+        <%= link_to "Add a new assignment", new_assignment_path(officer_id: @officer.id), :class => "waves-effect waves-light btn btn-primary" %>
       </div>
     <% end %>
     </div>
@@ -32,7 +32,7 @@
   <% if can? :new, Assignment %>
     <div class="card grey lighten-3">
       <div class="card-action">
-        <%= link_to "Add a new assignment", new_assignment_path(officer_id: @officer.id) %>
+        <%= link_to "Add a new assignment", new_assignment_path(officer_id: @officer.id), :class => "waves-effect waves-light btn btn-primary" %>
       </div>
     </div>
   <% end %>

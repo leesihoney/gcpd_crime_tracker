@@ -1,18 +1,16 @@
+<%=@investigation.id%>
 <div class="row">
-  <div class="col s8 offset-s2">
+  <div class="col s7">
     <div class = 'card'>
       <div class = 'card-content'>
-        <span class = 'card-title'> New Investigation Note for <%= @investigation.title %>: </span>
-        <span class = 'card-writer'> Written By <%= @officer.proper_name %>: </span>
-        <%= simple_form_for(@note)  do |f|  %>
+        <span class = 'card-title'> New Suspect: </span>
+        <%= simple_form_for(@suspect) do |f| %>
           <%= f.error_notification %>
           <div class="row">
             <div class="form-inputs">
               <%= f.input :investigation_id, as: :hidden, input_html: { value: @investigation.id } %>
               <%= f.input :from, as: :hidden, input_html: { value: "investigation" } %>
-              <%= f.input :officer_id, as: :hidden, input_html: { value: @officer.id } %>
-              <%= f.input :from, as: :hidden, input_html: { value: "officer" } %>
-              <%= f.input :content %>
+              <%= f.input :criminal_id, collection: (Criminal.all.to_a - @investigations_criminals), include_blank: true %>
             </div>
           </div>
           <div class="row">
@@ -21,6 +19,15 @@
             </div>
           </div>
         <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col s5">
+    <div class = 'card'>
+      <div class = 'card-content'>
+        <span class = 'card-title'> For Investigation: </span>
+        <p class = 'card-subtitle'><%= @investigation.title %></p>
       </div>
     </div>
   </div>

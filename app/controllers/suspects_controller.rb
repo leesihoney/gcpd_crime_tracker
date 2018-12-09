@@ -4,6 +4,11 @@ class SuspectsController < ApplicationController
   
     def new
       @suspect = Suspect.new
+      unless params[:investigation_id].nil?
+        @investigation = Investigation.find(params[:investigation_id])
+        @investigations_criminals = @investigation.suspects.map{|s| s.criminal}
+      end
+
     end
     
     def create
@@ -14,7 +19,7 @@ class SuspectsController < ApplicationController
         redirect_to investigation_path(@suspect.investigation)
       else
         # error message 
-        flash[:notice] = "Failed to add #{@suspect.criminal.proper_name} on the investigation #{@suspect.investgation.title}."
+        flash[:notice] = "Failed to add #{@suspect.criminal.proper_name} on the investigation #{@suspect.investigation.title}."
         render action: 'new'
       end      
     end

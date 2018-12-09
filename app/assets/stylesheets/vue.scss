@@ -3,7 +3,10 @@
     font-weight: 800;
     margin-top: 20px;
 }
-
+.vue-tabs {
+    margin: 0 auto;
+    text-align: center;
+}
 .tabs .tab .tab-text-blue.active, .tabs .tab .tab-text-blue:hover {
     color: #192B61;
 }

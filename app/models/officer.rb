@@ -10,6 +10,14 @@ class Officer < ApplicationRecord
   has_many :investigations, through: :assignments
   has_many :investigation_notes
 
+  # getters and setters
+  attr_accessor :username, :password, :password_confirmation, :role
+
+  # delegation
+  delegate :username, to: :user, allow_nil: true
+  delegate :role, to: :user, allow_nil: true
+
+
   # Scopes
   scope :alphabetical, -> { order('last_name, first_name') }
   scope :for_unit, -> (unit_id){ where(unit_id: unit_id) }
