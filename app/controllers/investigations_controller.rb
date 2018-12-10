@@ -17,7 +17,7 @@ class InvestigationsController < ApplicationController
     @previous_suspects = @investigation.suspects.alphabetical.to_a - @current_suspects
     @case_crimes = @investigation.crimes.alphabetical.to_a
     @officer = Officer.new
-    @notes = @investigation.investigation_notes.chronological
+    @notes = @investigation.investigation_notes.chronological.paginate(page: params[:page]).per_page(5)
   end
 
   def new
@@ -52,7 +52,7 @@ class InvestigationsController < ApplicationController
   def search
     redirect_back(fallback_location: investigations_path) if params[:query].blank?
     @query = params[:query]
-    @investigations = Investigation.search(@query)
+    @investigations = Investigation.title_search(@query)
     @total_hits = @investigations.size
   end
 

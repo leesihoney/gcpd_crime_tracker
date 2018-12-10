@@ -81,20 +81,28 @@
     grid-column-gap: 127px;
   }
 
-.units-button:hover, .crimes-button:hover, .officers-button:hover, .criminals-button:hover, .investigations-button:hover {
-    color: #192B61;
-    fill: #192B61;
-}
 
-.units-button.active, .crimes-button.active, .officers-button.active, .criminals-button.active, .investigations-button.active {
-    color: #000000;
-    fill: #000000;
-}
-
-.units-button, .crimes-button, .officers-button, .criminals-button, .investigations-button {
+.nav-button, .nav-button-active {
     color: #C4C4C4;
     display: grid;
     grid-template-columns: auto auto;
     grid-column-gap: 8px;
     align-items: center;
 }
+
+
+.second-header-groups a:hover .nav-button .button-name{
+    color: #192B61;
+} 
+
+.second-header-groups a:hover .nav-button .button-icon svg path {
+    fill: #192B61;
+} 
+
+.second-header-groups a .nav-button-active .button-name{
+    color: black;
+} 
+
+.second-header-groups a .nav-button-active .button-icon svg path{
+    fill: black;
+} 

@@ -2,21 +2,29 @@
   <div class = "second-header-groups">
 
     <%= link_to units_path do %>
-    <div class = 'units-button'>
-        <div class = 'button-icon'>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9.12533 2.76622H6.87467V0H0V6.87467H2.76622V9.12533H0V16H6.87467V13.2338H9.12533V16H16V9.12533H13.2338V6.87467H16V0H9.12533V2.76622ZM1.42222 1.42222H5.45244V5.45244H1.42222V1.42222ZM5.45244 14.5778H1.42222V10.5476H5.45244V14.5778ZM14.5778 14.5778H10.5476V10.5476H14.5778V14.5778ZM11.8116 9.12533H9.12533V11.8116H6.87467V9.12533H4.18844V6.87467H6.87467V4.18844H9.12533V6.87467H11.8116V9.12533ZM10.5476 1.42222H14.5778V5.45244H10.5476V1.42222Z" fill="#192B61"/>
-            </svg>
-                    
+        <% if params[:controller] == "units" %>
+        <div class = "nav-button-active">
+        <% else %>
+        <div class = "nav-button">
+        <% end %>
+            <div class = "button-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.12533 2.76622H6.87467V0H0V6.87467H2.76622V9.12533H0V16H6.87467V13.2338H9.12533V16H16V9.12533H13.2338V6.87467H16V0H9.12533V2.76622ZM1.42222 1.42222H5.45244V5.45244H1.42222V1.42222ZM5.45244 14.5778H1.42222V10.5476H5.45244V14.5778ZM14.5778 14.5778H10.5476V10.5476H14.5778V14.5778ZM11.8116 9.12533H9.12533V11.8116H6.87467V9.12533H4.18844V6.87467H6.87467V4.18844H9.12533V6.87467H11.8116V9.12533ZM10.5476 1.42222H14.5778V5.45244H10.5476V1.42222Z" fill="#C4C4C4"/>
+                </svg>         
+            </div>
+
+            <div class = "button-name">
+                Units
+            </div>
         </div>
-        <div class = 'button-name'>
-            Units
-        </div>
-    </div>
     <% end %>
 
     <%= link_to crimes_path do %>
-    <div class = 'crimes-button'>
+        <% if params[:controller] == "crimes" %>
+        <div class = "nav-button-active">
+        <% else %>
+        <div class = "nav-button">
+    <% end %>
         <div class = 'button-icon'>
             <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18.9368 5.89156H18.8717L18.0341 4.37588C18.7248 4.23943 19.6168 3.8917 20.5119 3.05175L20.1971 2.27081C18.7316 3.64679 17.4632 2.86888 16.9799 2.46648L16.0805 0.837344H5.74253L5.74123 0.837778H1.91374L0.53538 0H0V4.5132H1.14799H1.91374H4.0967C6.0868 6.27488 5.74253 7.07903 5.74253 7.07903H6.53128V7.26993C6.53128 8.7932 7.76539 10.0264 9.28758 10.0264H10.6724L12.6218 10.0772C14.1446 10.0772 15.3778 11.3115 15.3778 12.8339V14.2767C15.3778 16 18.6164 16 18.6164 16C20.1394 16 21.6933 15.7989 21.6933 14.2767V8.64807C21.6931 7.1261 20.459 5.89156 18.9368 5.89156ZM11.6328 8.87802H9.77675C8.78148 8.87802 7.97494 8.073 7.97104 7.07881C7.97321 6.38052 8.78062 5.81477 9.77675 5.81477H11.6328C11.6718 5.81477 11.7083 5.82128 11.7465 5.8228C11.8467 6.39983 11.7233 7.11482 10.9994 7.88535L11.781 8.1999C12.4237 7.51527 12.7782 6.8313 12.9706 6.238C13.2565 6.46122 13.4361 6.75299 13.4387 7.07599C13.4361 8.07148 12.6289 8.87802 11.6328 8.87802Z" fill="#C4C4C4"/>
@@ -30,7 +38,11 @@
     <% end %>
 
     <%= link_to officers_path do %>
-    <div class = 'officers-button'>
+    <% if params[:controller] == "officers" %>
+        <div class = "nav-button-active">
+    <% else %>
+    <div class = "nav-button">
+    <% end %>
         <div class = 'button-icon'>
             <svg width="12" height="16" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5.56516 5.91304C7.19801 5.91304 8.52169 4.58936 8.52169 2.95652C8.52169 1.32368 7.19801 0 5.56516 0C3.93232 0 2.60864 1.32368 2.60864 2.95652C2.60864 4.58936 3.93232 5.91304 5.56516 5.91304Z" fill="#C4C4C4"/>
@@ -48,7 +60,11 @@
     <% end %>
 
     <%= link_to criminals_path do %>
-    <div class = 'criminals-button'>
+    <% if params[:controller] == "criminals" %>
+        <div class = "nav-button-active">
+    <% else %>
+    <div class = "nav-button">
+    <% end %>
         <div class = 'button-icon'>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M16 8.67749C16 9.81249 13.3075 10.3875 8 10.3875C2.6925 10.3875 0 9.81249 0 8.67749C0 8.53999 0.1125 8.42749 0.25 8.42749H15.75C15.8875 8.42749 16 8.53999 16 8.67749Z" fill="#C4C4C4"/>
@@ -65,7 +81,11 @@
     <% end %>
 
     <%= link_to investigations_path do %>
-    <div class = 'investigations-button'>
+    <% if params[:controller] == "investigations" %>
+    <div class = "nav-button-active">
+    <% else %>
+    <div class = "nav-button">
+    <% end %>
         <div class = 'button-icon'>
             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9.95692 10.889C8.50453 10.889 7.1778 10.3541 6.16022 9.47172H1.61192V8.57876H5.3245C5.04593 8.20987 4.81096 7.80648 4.62621 7.37622H1.61192V6.48347H4.32677C4.23129 6.0964 4.17529 5.69424 4.16185 5.28114H1.61192V4.38797H4.20071C4.27242 3.79342 4.43381 3.22697 4.67147 2.70186H0V16H11.6866V11.2227L11.38 10.7123C10.9245 10.8274 10.4477 10.889 9.95692 10.889Z" fill="#C4C4C4"/>

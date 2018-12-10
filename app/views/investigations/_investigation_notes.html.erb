@@ -9,6 +9,8 @@
         <% for note in @notes %>
         <%= render :partial => 'note', locals: {note: note} %>
         <% end %>
+        <%= will_paginate @notes, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+
         
         <% if can? :new, InvestigationNote %>
             <div class = 'card-action'>

@@ -1,6 +1,10 @@
 <div class = 'container'>
     <div class = 'vue-section'>
-        <h1 class = 'page-title'> Investigations </h1>
+        <div class = 'index-header'>
+            <h1 class = 'page-title'> Investigations </h1>
+            <%= render :partial => "partials/title_with_search", locals: {path: search_path} %>
+        </div>
+
         <%= render partial: "partials/structure1", locals: {model_name: "investigation", 
                                                          primary: "tabbed_index", 
                                                          secondary: nil,

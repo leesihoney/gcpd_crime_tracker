@@ -1,0 +1,22 @@
+<div class = 'container bg-black'>
+  <div class = 'login'>
+    <h2> Sign Up</h2>
+    <div class = 'login-box'>
+    <%= simple_form_for(@user)  do |f|  %>
+        <%= f.error_notification %>
+        <div class="row">
+          <div class="form-inputs">
+            <%= f.input :username %>
+            <%= f.input :password %>
+            <%= f.input :role %>
+            <%= f.input :active %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-actions">
+            <%= f.button :submit, :class => "home-primary-button" %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
