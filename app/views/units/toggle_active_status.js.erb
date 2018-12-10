@@ -1,0 +1,5 @@
+<% if @unit.active == true %>
+    $("#active-toggle").html('Active').removeClass('btn-alert').addClass('btn-primary')
+<% else %>
+    $("#active-toggle").html('Inactive').removeClass('btn-primary').addClass('btn-alert')
+<% end %>

@@ -41,6 +41,13 @@ class CrimesController < ApplicationController
     end
   end
 
+  def toggle_active_status
+    @crime = Crime.find(params[:id])
+    @crime.toggle!(:active)
+  end
+
+
+
 
 
   private

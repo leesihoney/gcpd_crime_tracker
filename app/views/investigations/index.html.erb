@@ -2,7 +2,7 @@
     <div class = 'vue-section'>
         <div class = 'index-header'>
             <h1 class = 'page-title'> Investigations </h1>
-            <%= render :partial => "partials/title_with_search", locals: {path: search_path} %>
+            <%= render :partial => "partials/title_with_search", locals: {path: search_path}, class: 'search-bar' %>
         </div>
 
         <%= render partial: "partials/structure1", locals: {model_name: "investigation", 

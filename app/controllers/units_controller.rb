@@ -42,6 +42,14 @@ class UnitsController < ApplicationController
     end
   end
 
+  def toggle_active_status
+    @unit = Unit.find(params[:id])
+    if @unit.toggle!(:active)
+      puts "Yes!"
+    else
+      puts "No!"
+    end
+  end
 
 
 

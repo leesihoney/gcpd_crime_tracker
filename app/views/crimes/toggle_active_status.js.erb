@@ -1,0 +1,6 @@
+<% if @crime.active == true %>
+    $("#active-toggle").html('Activate').removeClass('btn-alert').addClass('btn-secondary')
+<% else %>
+    $("#active-toggle").html('Deactivate').removeClass('btn-secondary').addClass('btn-alert')
+<% end %>
+location.reload()

@@ -1,6 +1,6 @@
 class OfficersController < ApplicationController
   authorize_resource
-  before_action :set_officer, only: [:show, :edit, :update, :destroy]
+  before_action :set_officer, only: [:show, :edit, :update, :destroy, :toggle_active_status]
   before_action :check_login
 
   def index
@@ -59,12 +59,9 @@ class OfficersController < ApplicationController
       render action: 'show'
     end
   end
-  
-  def search
-    redirect_back(fallback_location: officers_path) if params[:query].blank?
-    @query = params[:query]
-    @officers = Officer.search(@query)
-    @total_hits = @officers.size
+
+  def toggle_active_status
+    @officer.toggle!(:active)
   end
 
 

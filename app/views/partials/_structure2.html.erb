@@ -3,6 +3,9 @@
     <div class="row">
       <div class="col s7">
         <!-- primary partial gets displayed here in main div -->
+        <% if current_user.role? :commish or (current_user.role? :chief and ((Officer.find_by_user_id(current_user.id).unit.id == object.id if object == @unit) or (Officer.find_by_user_id(current_user.id).unit.id == object.unit_id if object == @officer))) %>
+        <span class = "card-writer"> Click to change the active status &nbsp;&nbsp;<%= link_to "#{ object.active ? 'Active' : 'Inactive' }", togglepath, method: :patch, remote: :true, id: "active-toggle", class: "btn-#{ object.active ? 'primary' : 'alert' }"  %> </span>
+        <% end %>
         <%= render partial: "#{primary}" %>
         <!-- sometimes we want another partial below -->
         <% unless secondary.nil? %>

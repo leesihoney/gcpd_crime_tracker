@@ -8,24 +8,24 @@
       <th>Crime</th>
       <th>Level</th>
 
-
-      <th class="align_center">Edit</th>
+      <% if logged_in? %>
+      <th class="align_center">Active</th>
+      <% end %>
     </thead>
     <% for crime in crimes %>
       <tr>
-        <td><%= best_in_place crime, :name, as: :input %><%# crime.name %></td>
+        <td><%= best_in_place crime, :name, as: :input %><% crime.name %>  </td>
         <td><%= crime.felony ? "Felony" : "Misdemeanor" %></td>
 
 
 
 
 
-
+        <% if logged_in? %>
         <td class="align_center">
-          <%= link_to edit_crime_path(crime) do %>
-              <i class="material-icons">edit</i>
-          <% end %>
+        <%= link_to "#{ crime.active ? 'Activate' : 'Deactivate' }", toggle_active_status_crime_path(crime), method: :patch, remote: :true, class: "btn-#{ crime.active ? 'secondary' : 'alert' } toggle-it"  %>
         </td>
+        <% end %>
       </tr>
     <% end %>
   </table>

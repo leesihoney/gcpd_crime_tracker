@@ -20,10 +20,26 @@ Rails.application.routes.draw do
 
 
   # Resource routes (maps HTTP verbs to controller actions automatically):
-  resources :officers
-  resources :units
+  resources :officers do
+    member do 
+      patch :toggle_active_status
+    end
+  end
+
+  resources :units do 
+    member do 
+      patch :toggle_active_status
+    end
+  end
+
   resources :investigations
-  resources :crimes
+
+  resources :crimes do 
+    member do
+      patch :toggle_active_status
+    end
+  end
+
   resources :investigation_notes
   resources :crime_investigations
   # Routes for assignments
@@ -45,9 +61,6 @@ Rails.application.routes.draw do
 
 
   # Routes for searching
-
-  get 'officers/search', to: 'officers#search', as: :officer_search
-  get 'criminals/search', to: 'criminals#search', as: :criminal_search
 
 
 
