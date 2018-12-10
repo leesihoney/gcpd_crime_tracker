@@ -28,6 +28,8 @@ class AbilityTest < ActiveSupport::TestCase
       assert @msawyer_ability.can? :read, @msawyer_user
       assert @msawyer_ability.can? :update, @msawyer_user
       deny @msawyer_ability.can? :manage, @jblake_user
+      deny @msawyer_ability.can? :destroy, @jblake
+      deny @msawyer_ability.can? :destroy, @jgordon
       delete_chief_abilities
     end
 

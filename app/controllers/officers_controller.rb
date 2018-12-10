@@ -56,6 +56,7 @@ class OfficersController < ApplicationController
       flash[:notice] = "Successfully destroyed #{@officer.proper_name}."
       redirect_to officers_path
     else
+      flash[:notice] = "You cannot destroy #{@officer.proper_name}."
       render action: 'show'
     end
   end

@@ -1,26 +1,30 @@
 class UnitsController < ApplicationController
-  authorize_resource
 
   
   def index
+    authorize! :index, @unit
     @active_units = Unit.active.alphabetical.paginate(page: params[:page]).per_page(10)
     @inactive_units = Unit.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
   end
 
   def show
+    authorize! :show, @unit
     @unit = Unit.find(params[:id])
     @officers = @unit.officers.active.alphabetical.paginate(page: params[:page]).per_page(10)
   end
 
   def new
+    authorize! :new, @unit
     @unit = Unit.new
   end
 
   def edit
+    authorize! :edit, @unit
     @unit = Unit.find(params[:id])
   end
 
   def create
+    authorize! :create, @unit
     @unit = Unit.new(unit_params)
     if @unit.save
       redirect_to units_path, notice: "Successfully added #{@unit.name} to GCPD."
@@ -30,6 +34,7 @@ class UnitsController < ApplicationController
   end
 
   def update
+    authorize! :create, @unit
     @unit = Unit.find(params[:id])
     respond_to do |format|
       if @unit.update_attributes(unit_params)
@@ -51,7 +56,17 @@ class UnitsController < ApplicationController
     end
   end
 
-
+  def destroy
+    @unit = Unit.find(params[:id])
+    unit_name = @unit.name
+    if @unit.destroy
+      flash[:notice] = "Successfully destroyed #{unit_name}."
+      redirect_to units_path
+    else
+      flash[:notice] = "You cannot destroy #{unit_name}."
+      render action: 'show'
+    end
+  end
 
 
 
